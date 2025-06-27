@@ -1,184 +1,230 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 html {
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 body {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 .header {
-    background-color: #e9edc9;
-    display: flex;
-    padding: 1rem 2rem;
-    justify-content: space-between;
-    align-items: center;
+  background-color: #e9edc9;
+  display: flex;
+  padding: 1rem 2rem;
+  justify-content: space-between;
+  align-items: center;
 
-    position: fixed;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  z-index: 1;
 }
 .header div {
-    flex: 0 2 20%;
+  flex: 0 2 20%;
 }
 nav {
-    width: 40%;
+  width: 40%;
 }
 nav .nav {
-    display: flex;
-    flex: 2 1 100%;
-    list-style: none;
-    justify-content: space-evenly;
+  display: flex;
+  flex: 2 1 100%;
+  list-style: none;
+  justify-content: space-evenly;
 }
 .nav li:not(:last-child) {
-    padding-right: 1.5rem;
+  padding-right: 1.5rem;
 }
 .nav a {
-    text-decoration: none;
-    font-size: 1.4rem;
-    color: #333;
-    white-space: nowrap;
+  text-decoration: none;
+  font-size: 1.4rem;
+  color: #333;
+  white-space: nowrap;
 }
 .section__hero {
-    height: 90vh;
-    text-align: center;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
-     url("images/jonas-degener.jpg");
-    background-position: center;
-    background-size: cover;
+  height: 90vh;
+  text-align: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
+    url("images/jonas-degener.jpg");
+  background-position: center;
+  background-size: cover;
 }
 .hero-text {
-    color: #fff;
-    margin: 0 auto;
-    padding-top: 20%;
+  color: #fff;
+  margin: 0 auto;
+  padding-top: 20%;
 }
 .hero-text h1 {
-    font-size: 8.4rem;
-    letter-spacing: 0.3px;
-    line-height: 1;
-    margin-bottom: 2rem; 
+  font-size: 8.4rem;
+  letter-spacing: 0.3px;
+  line-height: 1;
+  margin-bottom: 2rem;
 }
 .hero-text span {
-    font-size: 3.2rem;
-    text-transform: uppercase;
-    letter-spacing: 0.8rem;
-    font-weight: 300;
+  font-size: 3.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8rem;
+  font-weight: 300;
 }
 /* Section Services */
 .features-container {
-    background-color: #e9edc9;
-    margin: 0 auto;
-    padding: 2rem 4rem;
-    display: flex;
-    justify-content: center;
+  background-color: #e9edc9;
+  margin: 0 auto;
+  padding: 2rem 4rem;
+  display: flex;
+  justify-content: center;
 }
 .feature:not(:last-child) {
-    margin-right: 1.5rem;
+  margin-right: 1.5rem;
 }
 .feature {
-    max-width: 22%;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    align-items: center;
+  max-width: 22%;
+  perspective: 50rem;
 }
+.content {
+  position: relative;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+.feature:hover .content {
+  transform: rotateY(180deg);
+  transition: transform 0.5s;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.front,
+.back {
+  text-align: center;
+  backface-visibility: hidden;
+  border-radius: 5px;
+}
+
+.back {
+  transform: rotateY(180deg);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  color: #333;
+  padding: 1.5rem 2rem;
+}
+
+.back h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+.back p {
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+
 .feature img {
-    width: 100%;
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 1380px) {
+  .features-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .feature {
+    max-width: 50%;
+  }
+  .feature:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 1.5rem;
+  }
 }
 
 @media screen and (max-width: 760px) {
-    .features-container {
-        flex-direction: column;
-    }
-    .feature {
-        max-width: 100%;
-    }
-    .feature:not(:last-child) {
-    margin-right: 0;
-    margin-bottom: 1.5rem;
-}
-    .feature img {
-    width: 70%;
-}
-.hero-text h1 {
+  .feature {
+    max-width: 100%;
+  }
+  .feature img {
+    width: 100%;
+  }
+  .hero-text h1 {
     font-size: 4.4rem;
-}
-.hero-text span {
+  }
+  .hero-text span {
     font-size: 2.2rem;
-}
+  }
 }
 
 @media screen and (max-width: 500px) {
-    .header {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-    .header div {
-        display: none;
-    }
-    nav {
-        width: 100%;
-    }
+  .header {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .header div {
+    display: none;
+  }
+  nav {
+    width: 100%;
+  }
 }
 /* form section */
 form {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    align-items: center;
-    padding: 5rem 0;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 5rem 0;
 }
 fieldset {
-    width: 40%;
-    padding: 2rem;
-    font-size: 1.4rem;
+  width: 40%;
+  padding: 2rem;
+  font-size: 1.4rem;
 }
 label {
-    display: block;
-    padding-bottom: 1rem;
+  display: block;
+  padding-bottom: 1rem;
 }
 label[for="email"] {
-    padding-top: 2rem;
+  padding-top: 2rem;
 }
 input[type="text"],
 input[type="email"],
 textarea {
-    padding: 1.5rem 3rem;
+  padding: 1.5rem 3rem;
+  border-radius: 1rem;
+  border: 0.05rem solid #333;
 }
 form button {
-    display: block;
-    background-color: #e9edc9;
-    padding: 1.5rem 2rem;
-    border-radius: 9px;
-    border: none;
-    text-transform: uppercase;
-    font-weight: 600;
-    color: green;
-    transition: all 0.3s;
+  display: block;
+  background-color: #e9edc9;
+  padding: 1.5rem 2rem;
+  border-radius: 9px;
+  border: 0.5px solid transparent;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: green;
+  margin-top: 0.7rem;
+  transition: all 0.3s;
 }
 form button:hover {
-    cursor: pointer;
-    background-color: #fff;
-    border: 0.5px solid #333;
+  cursor: pointer;
+  background-color: #fff;
+  border: 0.5px solid #333;
 }
 footer {
-    background-color: #e9edc9;
-    margin: 0 auto;
-    padding: 1rem 0;
-    text-align: center;
+  background-color: #e9edc9;
+  margin: 0 auto;
+  padding: 1rem 0;
+  text-align: center;
 }
 .social {
-    display: flex;
-    justify-content: center;
-    margin-top: .5rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
 }
 .social a {
-    padding-right: 0.8rem;
+  padding-right: 0.8rem;
 }
 .social i {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
